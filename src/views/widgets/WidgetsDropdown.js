@@ -15,10 +15,10 @@ import { cilArrowBottom, cilArrowTop, cilOptions } from '@coreui/icons'
 
 const WidgetsDropdown = () => {
   return (
-    <CRow>
-      <CCol sm={6} lg={3}>
+    <CRow className="mt-3" >
+      <CCol sm={6} lg={3} >
         <CWidgetStatsA
-          className="mb-4"
+          className=" mb-4 shadow-sm"
           color="primary"
           value={
             <>
@@ -105,7 +105,7 @@ const WidgetsDropdown = () => {
       </CCol>
       <CCol sm={6} lg={3}>
         <CWidgetStatsA
-          className="mb-4"
+          className=" mb-4 shadow-sm"
           color="info"
           value={
             <>
@@ -191,7 +191,7 @@ const WidgetsDropdown = () => {
       </CCol>
       <CCol sm={6} lg={3}>
         <CWidgetStatsA
-          className="mb-4"
+          className=" mb-4 shadow-sm"
           color="warning"
           value={
             <>
@@ -264,7 +264,7 @@ const WidgetsDropdown = () => {
       </CCol>
       <CCol sm={6} lg={3}>
         <CWidgetStatsA
-          className="mb-4"
+          className=" mb-4 shadow-sm"
           color="danger"
           value={
             <>

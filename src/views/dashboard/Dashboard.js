@@ -183,7 +183,7 @@ const Dashboard = () => {
   return (
     <>
       <WidgetsDropdown />
-      <CCard className="mb-4">
+      <CCard className="mb-4 shadow-sm">
         <CCardBody>
           <CRow>
             <CCol sm={5}>

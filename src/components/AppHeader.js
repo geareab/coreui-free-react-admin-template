@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   CContainer,
@@ -8,13 +7,15 @@ import {
   CHeaderDivider,
   CHeaderNav,
   CHeaderToggler,
+  CFormInput,
+  CInputGroupText,
+  CInputGroup,
   CNavLink,
   CNavItem,
+
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from '@coreui/icons'
-
-import { AppBreadcrumb } from './index'
+import { cilBell, cilEnvelopeOpen, cilList, cilMenu, cilSearch } from '@coreui/icons'
 import { AppHeaderDropdown } from './header/index'
 import { logo } from 'src/assets/brand/logo'
 
@@ -23,29 +24,22 @@ const AppHeader = () => {
   const sidebarShow = useSelector((state) => state.sidebarShow)
 
   return (
-    <CHeader position="sticky" className="mb-4">
-      <CContainer fluid>
+    <CHeader position="sticky" className="mb-4 shadow-sm">
+      <CContainer fluid className="d-flex">
         <CHeaderToggler
           className="ps-1"
           onClick={() => dispatch({ type: 'set', sidebarShow: !sidebarShow })}
         >
-          <CIcon icon={cilMenu} size="lg" />
+          <CIcon icon={cilMenu} size="xxl" />
         </CHeaderToggler>
         <CHeaderBrand className="mx-auto d-md-none" to="/">
           <CIcon icon={logo} height={48} alt="Logo" />
         </CHeaderBrand>
-        <CHeaderNav className="d-none d-md-flex me-auto">
-          <CNavItem>
-            <CNavLink to="/dashboard" component={NavLink} activeClassName="active">
-              Dashboard
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Users</CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Settings</CNavLink>
-          </CNavItem>
+        <CHeaderNav className=" flex-fill d-none d-md-block">
+          <CInputGroup className="flex-nowrap" size="lg">
+            <CInputGroupText id="addon-wrapping"><CIcon icon={cilSearch} height={19} /></CInputGroupText>
+            <CFormInput type="search" placeholder="Search..." aria-label="default input example" autoFocus />
+          </CInputGroup>
         </CHeaderNav>
         <CHeaderNav>
           <CNavItem>
@@ -64,13 +58,19 @@ const AppHeader = () => {
             </CNavLink>
           </CNavItem>
         </CHeaderNav>
+
         <CHeaderNav className="ms-3">
           <AppHeaderDropdown />
         </CHeaderNav>
       </CContainer>
-      <CHeaderDivider />
-      <CContainer fluid>
-        <AppBreadcrumb />
+      <CHeaderDivider className="d-md-none" />
+      <CContainer fluid className="d-md-none">
+        <CHeaderNav className="col-12">
+          <CInputGroup className="flex-nowrap" >
+            <CInputGroupText id="addon-wrapping"><CIcon icon={cilSearch} height={18} /></CInputGroupText>
+            <CFormInput className="form-control" type="search" placeholder="Search..." aria-label="default input example" />
+          </CInputGroup>
+        </CHeaderNav>
       </CContainer>
     </CHeader>
   )
